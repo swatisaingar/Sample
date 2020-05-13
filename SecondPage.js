@@ -9,7 +9,8 @@ export default class SecondPage extends React.Component {
   };
 
   onPressButton = () => {
-    this.props.navigation.navigate('Home');
+    this.fetchData2();
+    // this.props.navigation.navigate('Home');
   };
 
   fetchData2(text) {
@@ -17,10 +18,10 @@ export default class SecondPage extends React.Component {
     const api = 'https://api.weatherstack.com/current?';
     const apikey = '89d07a891858caeaca9d725aef1839f9';
     // console.log(api + '${this.state.text}');
-    fetch(api + text + apikey)
+    fetch(api + 'access_key=' + apikey + '&query=' + text)
       .then(response => response.json())
       .then(responseJson => {
-        console.log(responseJson.capital);
+        console.log(responseJson);
       })
       .catch(error => {
         console.log(error);
